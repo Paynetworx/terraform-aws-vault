@@ -16,6 +16,12 @@ variable "allowed_inbound_cidr_blocks" {
   type        = list(string)
 }
 
+variable "allowed_inbound_ipv6_cidr_blocks" {
+  description = "A list of CIDR-formatted IPv6 address ranges from which the ELB will accept requests."
+  type        = list(string)
+  default     = []
+}
+
 variable "vault_asg_name" {
   description = "Name of the Vault Autoscaling Group"
 }

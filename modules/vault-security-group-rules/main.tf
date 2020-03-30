@@ -3,12 +3,13 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 resource "aws_security_group_rule" "allow_api_inbound_from_cidr_blocks" {
-  count       = length(var.allowed_inbound_cidr_blocks) >= 1 ? 1 : 0
+  count       = (length(var.allowed_inbound_cidr_blocks) + length(var.allowed_inbound_ipv6_cidr_blocks)) >= 1 ? 1 : 0
   type        = "ingress"
   from_port   = var.api_port
   to_port     = var.api_port
   protocol    = "tcp"
   cidr_blocks = var.allowed_inbound_cidr_blocks
+  ipv6_cidr_blocks = var.allowed_inbound_ipv6_cidr_blocks
 
   security_group_id = var.security_group_id
 }

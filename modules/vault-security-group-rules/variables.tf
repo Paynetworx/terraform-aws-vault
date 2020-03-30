@@ -12,6 +12,12 @@ variable "allowed_inbound_cidr_blocks" {
   type        = list(string)
 }
 
+variable "allowed_inbound_ipv6_cidr_blocks" {
+  description = "A list of CIDR-formatted IPv6 address ranges from which the EC2 Instances will allow connections to Vault"
+  type        = list(string)
+  default     = []
+}
+
 variable "allowed_inbound_security_group_ids" {
   description = "A list of security group IDs that will be allowed to connect to Vault"
   type        = list(string)
